@@ -1,62 +1,93 @@
 /*
-  Blink
+  SOS
 
-  Turns an LED on for one second, then off for one second, repeatedly.
+  Blinks LED connected to output pin 11 in morse code for each letter of S O S.
+  Blinks LED connected to output pin 10 on for each letter and breifly off between each letter in order to
+  better denote each letter from eachother.
 
-  Most Arduinos have an on-board LED you can control. On the UNO, MEGA and ZERO
-  it is attached to digital pin 13, on MKR1000 on pin 6. LED_BUILTIN is set to
-  the correct LED pin independent of which board is used.
-  If you want to know what pin the on-board LED is connected to on your Arduino
-  model, check the Technical Specs of your board at:
-  https://docs.arduino.cc/hardware/
+  then says jk jk because I had time
 
-  modified 8 May 2014
-  by Scott Fitzgerald
-  modified 2 Sep 2016
-  by Arturo Guadalupi
-  modified 8 Sep 2016
-  by Colby Newman
-
-  This example code is in the public domain.
-
-  https://docs.arduino.cc/built-in-examples/basics/Blink/
+  
 */
 
 // the setup function runs once when you press reset or power the board
 void setup() {
   // initialize digital pin LED_BUILTIN as an output.
-  pinMode(13, OUTPUT);
-  pinMode(12, OUTPUT);
+  pinMode(11, OUTPUT); //LED1
+  pinMode(10, OUTPUT); //LED2
+  pinMode(9, OUTPUT);//LED3
+  pinMode(8, OUTPUT); //LED4
 }
 
 // the loop function runs over and over again forever
 void loop() {
-  digitalWrite(12, HIGH);
-  for(int i=0; i<3; i++){
-    digitalWrite(13, HIGH);  // turn the LED on (HIGH is the voltage level)
+  digitalWrite(10, HIGH); //LED2 on for start of a letter  (S)
+  for(int i=0; i<3; i++){ //for loop to repeat long dash 3 times
+    digitalWrite(11, HIGH);  //LED1 on
+    delay(1500);  //length of time LED1 remains on
+    digitalWrite(11, LOW);   //LED1 off 
+    delay(1000);  //length of time LED1 remains off
+  }
+  digitalWrite(10, LOW); //LED2 off - end of letter
+  delay(500); //delay before next letter
+  digitalWrite(10,HIGH); //LED2 on for letter 2 (O)
+
+  for(int i=0; i<3; i++){ //For loop that repeats short dash 3 times
+    digitalWrite(11, HIGH); //LED1 on
+    delay(400); //LED1 on duration
+    digitalWrite(11, LOW); // LED1 off
+    delay(400); //LED1 off duration
+  }
+  digitalWrite(10, LOW); //LED2 off - end of letter
+  delay(500); // duration between letters
+  digitalWrite(10,HIGH); //LED2 on - start of next letter
+
+  for(int i=0; i<3; i++){ //letter S again
+    digitalWrite(11, HIGH);  
     delay(1500);
-    digitalWrite(13, LOW);   // turn the LED off by making the voltage LOW
+    digitalWrite(11, LOW);   
     delay(1000);
   }
-  digitalWrite(12, LOW);
-  delay(500);
-  digitalWrite(12,HIGH);
-  for(int i=0; i<3; i++){
-    digitalWrite(13, HIGH);
-    delay(400);
-    digitalWrite(13, LOW);   // turn the LED off by making the voltage LOW
-    delay(400);
-  }
-  digitalWrite(12, LOW);
-  delay(500);
-  digitalWrite(12,HIGH);
-  for(int i=0; i<3; i++){
-    digitalWrite(13, HIGH);  // turn the LED on (HIGH is the voltage level)
-    delay(1500);
-    digitalWrite(13, LOW);   // turn the LED off by making the voltage LOW
-    delay(1000);
-  }digitalWrite(12, LOW);
-  delay(500);
+  digitalWrite(10, LOW);//LED2 off end of letter
+  delay(500); //Duration before next
   
-                        // wait for a second
+
+ for(int i=0; i<2; i++){ //repeat letters j and k twice
+  digitalWrite(10,HIGH);
+  //letter j
+  digitalWrite(9, HIGH); //short dash
+  delay(400); 
+  digitalWrite(9, LOW); 
+  delay(400); 
+  for(int i=0; i<3; i++){ //3 long
+    digitalWrite(9, HIGH);  
+    delay(1500);
+    digitalWrite(9, LOW);   
+    delay(1000);
+  }
+  digitalWrite(10, LOW);//LED2 off end of letter
+  delay(500); //Duration before next
+  digitalWrite(10,HIGH);
+
+  //letter k
+  digitalWrite(8, HIGH); //long dash
+  delay(1500);
+  digitalWrite(8, LOW);   
+  delay(1000);
+
+  digitalWrite(8, HIGH); //short dash
+  delay(400); 
+  digitalWrite(8, LOW); 
+  delay(400);
+
+  digitalWrite(8, HIGH); //long dash
+  delay(1500);
+  digitalWrite(8, LOW);   
+  delay(1000);
+
+  digitalWrite(10, LOW);//LED2 off end of letter
+  delay(500); //Duration before next
+ }
+ digitalWrite(10, LOW);//LED2 off end of letter
+  delay(500); //Duration before next
 }
