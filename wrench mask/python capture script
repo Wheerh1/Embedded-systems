@@ -1,0 +1,5 @@
+//https://www.instructables.com/Capture-Data-From-Arduino-to-CSV-File-Using-PySeri/ 
+
+//setup commands: 
+//python -m pip install pyserial
+//check install - pip show pyserial

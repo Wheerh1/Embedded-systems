@@ -3,6 +3,7 @@
 int LED = 13; // Use the onboard Uno LED
 int testLED = 8;
 int testLED2 = 7;
+int testLED3 = 9;
 const byte isObstaclePin = 2;  // This is our input pin
 int isObstacle = HIGH;  // HIGH MEANS NO OBSTACLE
 volatile bool start = false;
@@ -29,12 +30,16 @@ void loop() {
 
   if(start == true){
     digitalWrite(testLED, HIGH);
-    delay (500);
+    delay (100);
     digitalWrite(testLED2, HIGH);
+    delay (100);
+    digitalWrite(testLED3, HIGH);
     delay(600);
     digitalWrite(testLED,LOW);
-    delay(500);
+    delay(100);
     digitalWrite(testLED2, LOW);
+    delay(100);
+    digitalWrite(testLED3, LOW);
     start = false;
   }
 
@@ -43,4 +48,7 @@ void loop() {
 
 void sensorTrip(){
   start = true;
+//    digitalWrite(LED, HIGH);
+//     delay (500);
+//     digitalWrite(LED, LOW);
 }
