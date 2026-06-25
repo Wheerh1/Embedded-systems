@@ -7,6 +7,7 @@
 
 // Constructor for 128x64 SH1106 using Hardware SPI - google AI, the documentation for u8g2 is horrible to read but can still mostly read it
    U8G2_SH1106_128X64_NONAME_F_4W_HW_SPI u8g2(U8G2_R0, /* cs=*/ 10, /* dc=*/ 9, /* reset=*/ 8);
+  // U8G2_SSD1306_128X64_NONAME_F_4W_HW_SPI u8g2(U8G2_R0, /* cs=*/ 10, /* dc=*/ 9, /* reset=*/ 8);
 //   ↑  ↑driver   ↑     ↑?   ↑  ↑4 wire SPI connection
 //Library  resolution   full buffer
 
@@ -157,6 +158,10 @@ int countdown = 0;
 
 void setup() {
   pinMode(A0, INPUT_PULLUP); //internal pullup resistor enabled in order to clean up signal
+  // pinMode(9, OUTPUT);
+  // pinMode(10, OUTPUT);
+  // pinMode(11, OUTPUT);
+  // pinMode(13, OUTPUT);
   u8g2.begin(); //required to start u8g2 
   Serial.begin(9600);
 }
